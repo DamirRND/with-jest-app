@@ -27,4 +27,14 @@ describe('Home', () => {
     expect(paragraph).toHaveTextContent("I");
   })
 
+  it('renders paragraph with error message when input is less than 1 and larger than 1000', ()=>{
+    render(<Home />);
+    const paragraph = screen.getByTestId('roman-numeral-paragraph');
+    const input = screen.getByTestId('user-number-input');
+
+    fireEvent.change(input, {target: {value: 1001}});
+    expect(input).toHaveValue(1001);
+    expect(paragraph).toHaveTextContent(/number can be greater or equal to 1 and less or equal to 1000/i);
+  })
+
 })
