@@ -2,17 +2,17 @@ import React, {ChangeEvent, FC, useCallback} from "react";
 import {InputField} from "../common/components/InputField";
 
 interface UserIntegerInputProps {
-    handleOnChange: (value: number) => void;
+    onChange: (value: number) => void;
     value: number;
 }
 
-export const UserIntegerInput: FC<UserIntegerInputProps> = ({handleOnChange, value, ...rest}) => {
-    const handleChange = useCallback(
+export const UserIntegerInput: FC<UserIntegerInputProps> = ({onChange, value, ...rest}) => {
+    const handleOnChange = useCallback(
         (event: ChangeEvent<HTMLInputElement>) => {
-            handleOnChange(event.target.valueAsNumber);
+            onChange(event.target.valueAsNumber);
         },
-        [handleOnChange]
+        [onChange]
     );
 
-    return <InputField type="number" value={value} onChange={handleChange} {...rest}/>
+    return <InputField type="number" value={value} onChange={handleOnChange} {...rest}/>
 }
