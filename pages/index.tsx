@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 import styles from '@/pages/index.module.css'
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 
 export default function Home() {
     const [numberInput, setNumberInput] = useState(0);
@@ -9,6 +9,12 @@ export default function Home() {
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
         setNumberInput(() => event.target.valueAsNumber)
     }
+
+    useEffect(() => {
+        if (numberInput === 1) {
+            setRomanOutput("I");
+        }
+    }, [numberInput])
 
     return (
         <div className={styles.container}>
