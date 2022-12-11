@@ -11,8 +11,12 @@ export default function Home() {
     }
 
     useEffect(() => {
-        if (numberInput === 1) {
-            setRomanOutput("I");
+        if(numberInput < 1 || numberInput > 1000) {
+            setRomanOutput("Number can be greater or equal to 1 and less or equal to 1000");
+        }else {
+            if (numberInput === 1) {
+                setRomanOutput("I");
+            }
         }
     }, [numberInput])
 
