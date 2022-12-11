@@ -11,6 +11,8 @@ export default function Home() {
             </Head>
             <main>
                 <h1 className={styles.title}>Convert from Integer to Roman Numeral</h1>
+                <p data-testid="roman-numeral-paragraph">Test</p>
+                <input type="number" data-testid="user-number-input"/>
             </main>
         </div>
     )
