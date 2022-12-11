@@ -6,7 +6,7 @@ interface UserIntegerInputProps {
     value: number;
 }
 
-export const UserIntegerInput: FC<UserIntegerInputProps> = ({handleOnChange, value}) => {
+export const UserIntegerInput: FC<UserIntegerInputProps> = ({handleOnChange, value, ...rest}) => {
     const handleChange = useCallback(
         (event: ChangeEvent<HTMLInputElement>) => {
             handleOnChange(event.target.valueAsNumber);
@@ -14,5 +14,5 @@ export const UserIntegerInput: FC<UserIntegerInputProps> = ({handleOnChange, val
         [handleOnChange]
     );
 
-    return <InputField type="number" value={value} onChange={handleChange}/>
+    return <InputField type="number" value={value} onChange={handleChange} {...rest}/>
 }

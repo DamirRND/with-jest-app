@@ -10,6 +10,7 @@ export const RomanNumeralConverter: FC = () => {
         <>
             <p data-testid="roman-numeral-paragraph">{output}</p>
             <UserIntegerInput
+                data-testid="user-number-input"
                 handleOnChange={setNumberInput}
                 value={numberInput}/>
         </>
