@@ -1,24 +1,14 @@
-import {FC, useEffect, useState} from "react";
+import {FC, useState} from "react";
 import {UserIntegerInput} from "@/pages/UserIntegerInput";
+import useIntegerToRomanConverter from "../common/hooks/useIntegerToRomanConverter";
 
 
 export const RomanNumeralConverter: FC = () => {
     const [numberInput, setNumberInput] = useState(0);
-    const [romanOutput, setRomanOutput] = useState('');
-
-    useEffect(() => {
-        if (numberInput < 1 || numberInput > 1000) {
-            setRomanOutput("Number can be greater or equal to 1 and less or equal to 1000");
-        } else {
-            if (numberInput === 1) {
-                setRomanOutput("I");
-            }
-        }
-    }, [numberInput])
-
-    return(
+    const output = useIntegerToRomanConverter(numberInput);
+    return (
         <>
-            <p data-testid="roman-numeral-paragraph">{romanOutput}</p>
+            <p data-testid="roman-numeral-paragraph">{output}</p>
             <UserIntegerInput
                 handleOnChange={setNumberInput}
                 value={numberInput}/>
