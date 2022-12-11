@@ -1,11 +1,14 @@
 import Head from 'next/head'
 
 import styles from '@/pages/index.module.css'
-import {useState} from "react";
+import {ChangeEvent, useState} from "react";
 
 export default function Home() {
     const [numberInput, setNumberInput] = useState(0);
     const [romanOutput, setRomanOutput] = useState('');
+    const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setNumberInput(() => event.target.valueAsNumber)
+    }
 
     return (
         <div className={styles.container}>
@@ -19,7 +22,8 @@ export default function Home() {
                 <input
                     type="number"
                     data-testid="user-number-input"
-                    value={numberInput}/>
+                    value={numberInput}
+                    onChange={handleOnChange}/>
             </main>
         </div>
     )
