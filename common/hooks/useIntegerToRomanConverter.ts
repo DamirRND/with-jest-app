@@ -17,8 +17,11 @@ const romanNumeralLookup: { [key: string]: number } = {
 }
 const getRomanNumeral = (userInput: number): string => {
     let romanNumeral = '';
-    if (userInput === 1) {
-        romanNumeral = 'I';
+    for (const key in romanNumeralLookup) {
+        while (userInput >= romanNumeralLookup[key]) {
+            romanNumeral += key;
+            userInput -= romanNumeralLookup[key];
+        }
     }
     return romanNumeral;
 }
